@@ -1,0 +1,142 @@
+$letter-spacing: -2%;
+$common-font-family: Graphik RBC LC , sans-serif;
+$h1-font-size: 0px;
+$h2-font-size: 0px;
+$screen-min-widths : 1366 1920;
+$body-font-family: KazimirText RBC, sans-serif;
+$suffixes: l m s;
+$font-styles:(regular, medium, light );
+$button-font-size: 0px;
+$button-line-hight: 0px;
+
+$caption-font-sizes: 16px 14px 12px;
+$caption-line-hights: 20px 18px 14px;
+
+
+@mixin screen ($screen-min-width : 1920) {
+    @if ($screen-min-width == 1366) {
+        $h1-font-size: 32px;
+        $h2-font-size: 24px;
+        $button-font-size: 14px;
+        $button-line-hight: 14px;
+        
+        %body-class {
+            font-family: $body-font-family;
+            font-Size: 16px;
+            line-height: 24px;
+            margin-top: 8px;
+        }
+        $caption-font-sizes: 16px 14px 12px;
+        $caption-line-hights: 20px 18px 14px;
+        
+        } @else {    
+
+            $h1-font-size: 36px;
+            $h2-font-size: 32px;
+            $button-font-size: 18px;
+            $button-line-hight: 20px;
+        
+            %body-class {
+                font-family: KazimirText RBC;
+                font-Size: 18px;
+                line-height: 26px;
+                margin-top: 8px;
+                &:last-child{   
+                    margin-bottom: 8px;
+                }
+            }
+            $caption-font-sizes: 18px 16px 14px;
+            $caption-line-hights: 24px 20px 16px;
+        }
+
+
+//-----------------------------1366
+
+h1 {
+    font-family: $common-font-family;
+    font-style: semibold;
+    font-size: $h1-font-size;
+    line-height: $h1-font-size + 8px;
+    letter-spacing: $letter-spacing;
+
+}
+
+h2 {
+    font-family: $common-font-family;
+    font-style: medium;
+    font-size: $h2-font-size;   
+    line-height: $h2-font-size + 8px;
+    letter-spacing: $letter-spacing;
+}
+
+
+.button {
+    font-family: $common-font-family;
+    font-style: Regular;
+    font-size: $button-font-size;
+    line-height: $button-font-size;
+}
+
+%caption {
+    font-family : $common-font-family;    
+    letter-spacing: $letter-spacing;
+}
+
+@each $font-style in (regular, medium, light) {
+    @for $i from 1 through 2 {
+        .caption-#{nth($suffixes, $i)}-#{$font-style} {
+            font-size: nth($caption-font-sizes, $i);
+            line-height: nth($caption-line-hights, $i);
+            font-style: $font-style;            
+            @extend %caption;            
+        }
+    }
+}
+
+@each $font-style in (regular) {
+    @for $i from 3 through 3 {
+        .caption-#{nth($suffixes, $i)}-#{$font-style} {
+            font-size: nth($caption-font-sizes, $i);
+            line-height: nth($caption-line-hights, $i);
+            font-style: $font-style;            
+            @extend %caption;            
+        }
+    }
+}
+
+.body {
+    &-semibold {
+        @extend %body-class;
+        font-style: semibold;     
+    }
+    &-regular {
+        @extend %body-class;
+        font-style: regular; 
+    }
+}
+
+}
+
+
+@include screen(1366);
+@include screen(1920);
+
+%page{
+    font-family : $common-font-family;
+    text-transform : uppercase;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.page {
+
+    &-title {
+        @extend %page;
+        font-style: Semibold;
+    }
+    &-subtitle {
+        @extend %page;
+        font-style: Regular;
+
+    }
+}

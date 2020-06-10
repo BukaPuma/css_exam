@@ -1,0 +1,64 @@
+
+@import 'colors';
+
+.no-icon {
+    &_accent {
+        &_normal {
+            background-color: $accent_active;
+            border-color: $accent_active;
+        }
+        &_on-hover {
+            background-color: $on-hover;         
+            border-color: $on-hover;                     
+        }
+        &_disable {
+            background-color: $picked;
+            border-color: $picked;                                 
+        }
+        &-alt {
+            &_normal {
+                background-color: $white;
+                border-color: $accent_active;
+            }
+            &_on-hover {
+                background-color: $accent_active;        
+                border-color: $on-hover;                     
+            }
+            &_disable {
+                background-color: $white;
+                border-color: $picked;                                 
+            }
+        } 
+    }
+    &_secondary {
+        &_normal {
+            background-color: $grey;
+            border-color: $grey;
+        }
+        &_on-hover {
+            background-color: $light-grey;        
+            border-color: $light-grey;        
+        }
+        &_disable {
+            background-color: $dark-grey-2;
+            border-color: $dark-grey-2;
+        }
+    }
+    &_ghost {
+        &normal {
+            background-color: $white;
+            border-color: $white;      
+        }
+    }
+    
+}
+
+
+.with-icon {
+    &_accent {
+        &_normal {
+            background-color: $accent_active;
+            border-color: $accent_active;
+        }
+    }
+}
